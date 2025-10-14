@@ -1,3 +1,49 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* 🌙 Estilos globales base */
+body {
+  @apply bg-gray-900 text-gray-100 font-sans antialiased;
+}
+
+/* 🔹 Títulos */
+h1, h2, h3 {
+  @apply text-white font-semibold;
+}
+
+/* 🔸 Enlaces */
+a {
+  @apply text-blue-400 hover:text-blue-300 underline transition;
+}
+
+/* 🔸 Botones */
+button, .btn {
+  @apply inline-block px-4 py-2 rounded-lg font-medium transition;
+}
+
+.btn-primary {
+  @apply bg-blue-600 hover:bg-blue-700 text-white;
+}
+
+.btn-success {
+  @apply bg-green-600 hover:bg-green-700 text-white;
+}
+
+.btn-purple {
+  @apply bg-purple-600 hover:bg-purple-700 text-white;
+}
+
+/* 🔹 Contenedor principal */
+main {
+  @apply max-w-4xl mx-auto px-6 py-16;
+}
+
+/* 🔸 Secciones */
+section {
+  @apply mb-16;
+}
+
+section h2 {
+  @apply text-2xl border-b border-gray-700 pb-2 mb-6;
+}
