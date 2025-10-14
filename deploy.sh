@@ -22,36 +22,55 @@ git add .
 git commit -m "Auto commit previo al deploy" || echo "No hay cambios nuevos para commitear"
 
 # -----------------------------------------
-# 3️⃣ Build del sitio con Astro
+# 3️⃣ Verificar si Astro está instalado
+# -----------------------------------------
+if ! npx astro --version &>/dev/null; then
+  echo "⚙️ Instalando Astro..."
+  npm install astro @astrojs/tailwind tailwindcss
+fi
+
+# -----------------------------------------
+# 4️⃣ Build del sitio con Astro
 # -----------------------------------------
 echo "🧩 Construyendo sitio con Astro..."
 npm run build
 
 # -----------------------------------------
-# 4️⃣ Publicar en GitHub Pages
+# 5️⃣ Publicar en GitHub Pages
 # -----------------------------------------
 echo "🚀 Publicando en rama gh-pages..."
 
 # Cambiar directamente a gh-pages
 git checkout gh-pages
 
+# Guardar temporalmente el build antes de limpiar
+mv dist ../dist-temp
+
 # Limpiar archivos antiguos
 git rm -rf . > /dev/null 2>&1 || true
 rm -rf *
 
-# Copiar el nuevo contenido desde dist/
-cp -r dist/* .
+# Copiar el nuevo contenido compilado
+cp -r ../dist-temp/* .
 
-# Subir a GitHub
+# Eliminar la carpeta temporal
+rm -rf ../dist-temp
+
+# Commit y push del nuevo contenido
 git add .
-git commit -m "Deploy automático desde deploy.sh"
+git commit -m "Deploy automático desde deploy.sh" || echo "Nada para commitear"
+git push origin gh-pages --force
+
+# Guardar automáticamente los cambios en gh-pages antes de volver a main
+git add .
+git commit -m "Auto commit post-deploy" || echo "Nada para commitear"
 git push origin gh-pages --force
 
 # Volver a main
 git checkout main
 
 # -----------------------------------------
-# 5️⃣ Mostrar tiempo total y abrir el sitio
+# 6️⃣ Mostrar tiempo total y abrir el sitio
 # -----------------------------------------
 end_time=$(date +%s)
 elapsed=$((end_time - start_time))
