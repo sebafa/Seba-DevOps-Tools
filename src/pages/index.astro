@@ -1,0 +1,71 @@
+---
+// src/pages/index.astro
+import "../styles.css";
+---
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Seba DevOps Tools</title>
+  </head>
+  <body class="bg-gray-900 text-gray-100 font-sans">
+    <main class="max-w-4xl mx-auto px-6 py-16">
+      <!-- Header -->
+      <header class="text-center mb-16">
+        <h1 class="text-4xl font-bold mb-2">🚀 Seba DevOps Tools</h1>
+        <p class="text-gray-400">
+          Scripts, dashboards y automatizaciones para clusters y CI/CD.
+        </p>
+      </header>
+
+      <!-- Projects Section -->
+      <section id="projects" class="mb-20">
+        <h2 class="text-2xl font-semibold mb-6 border-b border-gray-700 pb-2">
+          🧩 Proyectos destacados
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-gray-800 p-6 rounded-2xl shadow hover:shadow-lg transition">
+            <h3 class="text-xl font-semibold mb-2">Pack de scripts Bash para Kubernetes</h3>
+            <p class="text-gray-400 mb-3">Automatiza deploys, limpieza de pods y monitoreo.</p>
+            <a
+              href="https://gumroad.com/"
+              target="_blank"
+              class="inline-block bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg"
+              >Ver en Gumroad</a
+            >
+          </div>
+
+          <div class="bg-gray-800 p-6 rounded-2xl shadow hover:shadow-lg transition">
+            <h3 class="text-xl font-semibold mb-2">Dashboard Grafana – Health Cluster</h3>
+            <p class="text-gray-400 mb-3">Panel completo para visualizar CPU, memory y pods.</p>
+            <a
+              href="https://github.com/"
+              target="_blank"
+              class="inline-block bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg"
+              >Ver en GitHub</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="text-center">
+        <h2 class="text-2xl font-semibold mb-4">📬 Contacto</h2>
+        <p class="text-gray-400 mb-4">
+          ¿Querés colaborar o pedirme una plantilla personalizada?
+        </p>
+        <a
+          href="mailto:tuemail@dominio.com"
+          class="inline-block bg-purple-600 hover:bg-purple-700 text-white py-2 px-6 rounded-lg"
+          >Escribime</a
+        >
+      </section>
+
+      <!-- Footer -->
+      <footer class="text-center text-gray-500 mt-16 text-sm">
+        © 2025 Seba DevOps. Hecho con Astro + Tailwind 💻
+      </footer>
+    </main>
+  </body>
+</html>
