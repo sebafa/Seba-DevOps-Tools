@@ -40,11 +40,20 @@ npm run build
 # -----------------------------------------
 echo "🚀 Publicando en rama gh-pages..."
 
-# Cambiar directamente a gh-pages
-git checkout gh-pages
+# Guardar temporalmente el build ANTES de cambiar de rama
+if [ -d "dist" ]; then
+  mv dist ../dist-temp
+else
+  echo "⚠️ No se encontró la carpeta dist. Abortando."
+  exit 1
+fi
 
-# Guardar temporalmente el build antes de limpiar
-mv dist ../dist-temp
+# Cambiar directamente a gh-pages (crear si no existe)
+if git show-ref --verify --quiet refs/heads/gh-pages; then
+  git checkout gh-pages
+else
+  git checkout --orphan gh-pages
+fi
 
 # Limpiar archivos antiguos
 git rm -rf . > /dev/null 2>&1 || true
