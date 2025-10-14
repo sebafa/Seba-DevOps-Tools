@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config';
 import tailwind from "@astrojs/tailwind";
 
 export default defineConfig({
-  base: '/Seba-DevOps-Tools/',   // 👈 importante para GitHub Pages
+  site: 'https://sebafa.github.io/Seba-DevOps-Tools/', // 👈 importante
+  base: '/Seba-DevOps-Tools/',                         // 👈 importantísimo
   integrations: [tailwind()],
 });
