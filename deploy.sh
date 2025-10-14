@@ -65,6 +65,9 @@ cp -r ../dist-temp/* .
 # Eliminar la carpeta temporal
 rm -rf ../dist-temp
 
+# Evitar que GitHub Pages ignore _astro/
+touch .nojekyll
+
 # Commit y push del nuevo contenido
 git add .
 git commit -m "Deploy automático desde deploy.sh" || echo "Nada para commitear"
