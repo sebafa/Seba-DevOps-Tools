@@ -9,7 +9,7 @@ import "../styles.css";
     <meta name="viewport" content="width=device-width" />
     <title>DevOps Tools</title>
     <style>
-      /* 🌐 Transición suave al cambiar idioma */
+      /* 🌐 Transición suave entre idiomas */
       [data-lang] {
         transition: opacity 0.4s ease;
       }
@@ -19,24 +19,6 @@ import "../styles.css";
         position: absolute;
       }
     </style>
-    <script>
-      function switchLang(lang) {
-        document.querySelectorAll("[data-lang]").forEach((el) => {
-          if (el.dataset.lang === lang) {
-            el.classList.remove("hidden");
-          } else {
-            el.classList.add("hidden");
-          }
-        });
-        localStorage.setItem("lang", lang); // guarda preferencia
-      }
-
-      // Mantiene idioma elegido
-      window.addEventListener("DOMContentLoaded", () => {
-        const savedLang = localStorage.getItem("lang") || "es";
-        switchLang(savedLang);
-      });
-    </script>
   </head>
 
   <body class="bg-gray-900 text-gray-100 font-sans relative min-h-screen">
@@ -143,5 +125,24 @@ import "../styles.css";
         </p>
       </footer>
     </main>
+
+    <!-- ✅ Script funcional en build estático -->
+    <script is:inline>
+      function switchLang(lang) {
+        document.querySelectorAll("[data-lang]").forEach((el) => {
+          if (el.dataset.lang === lang) {
+            el.classList.remove("hidden");
+          } else {
+            el.classList.add("hidden");
+          }
+        });
+        localStorage.setItem("lang", lang);
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const savedLang = localStorage.getItem("lang") || "es";
+        switchLang(savedLang);
+      });
+    </script>
   </body>
 </html>
