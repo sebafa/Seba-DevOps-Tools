@@ -2,48 +2,104 @@
 // src/pages/index.astro
 import "../styles.css";
 ---
+
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>Seba DevOps Tools</title>
+    <title>DevOps Tools</title>
+    <style>
+      /* 🌐 Transición suave al cambiar idioma */
+      [data-lang] {
+        transition: opacity 0.4s ease;
+      }
+      [data-lang].hidden {
+        opacity: 0;
+        pointer-events: none;
+        position: absolute;
+      }
+    </style>
+    <script>
+      function switchLang(lang) {
+        document.querySelectorAll("[data-lang]").forEach((el) => {
+          if (el.dataset.lang === lang) {
+            el.classList.remove("hidden");
+          } else {
+            el.classList.add("hidden");
+          }
+        });
+        localStorage.setItem("lang", lang); // guarda preferencia
+      }
+
+      // Mantiene idioma elegido
+      window.addEventListener("DOMContentLoaded", () => {
+        const savedLang = localStorage.getItem("lang") || "es";
+        switchLang(savedLang);
+      });
+    </script>
   </head>
-  <body class="bg-gray-900 text-gray-100 font-sans">
+
+  <body class="bg-gray-900 text-gray-100 font-sans relative min-h-screen">
     <main class="max-w-4xl mx-auto px-6 py-16">
+
+      <!-- 🌎 Selector de idioma -->
+      <div class="text-right mb-4">
+        <button onclick="switchLang('es')" class="text-gray-400 hover:text-white mx-1">🇪🇸 ES</button>
+        <button onclick="switchLang('en')" class="text-gray-400 hover:text-white mx-1">🇬🇧 EN</button>
+      </div>
+
       <!-- Header -->
       <header class="text-center mb-16">
         <h1 class="text-4xl font-bold mb-2">🚀 Seba DevOps Tools</h1>
-        <p class="text-gray-400">
+        <p data-lang="es" class="text-gray-400">
           Scripts, dashboards y automatizaciones para clusters y CI/CD.
+        </p>
+        <p data-lang="en" class="text-gray-400 hidden">
+          Scripts, dashboards and automations for CI/CD and Kubernetes clusters.
         </p>
       </header>
 
       <!-- Projects Section -->
       <section id="projects" class="mb-20">
-        <h2 class="text-2xl font-semibold mb-6 border-b border-gray-700 pb-2">
+        <h2 data-lang="es" class="text-2xl font-semibold mb-6 border-b border-gray-700 pb-2">
           🧩 Proyectos destacados
+        </h2>
+        <h2 data-lang="en" class="text-2xl font-semibold mb-6 border-b border-gray-700 pb-2 hidden">
+          🧩 Featured Projects
         </h2>
 
         <div class="grid md:grid-cols-2 gap-6">
+          <!-- Project 1 -->
           <div class="bg-gray-800 p-6 rounded-2xl shadow hover:shadow-lg transition">
-            <h3 class="text-xl font-semibold mb-2">Pack de scripts Bash para Kubernetes</h3>
-            <p class="text-gray-400 mb-3">Automatiza deploys, limpieza de pods y monitoreo.</p>
+            <h3 class="text-xl font-semibold mb-2">Bash Scripts Pack for Kubernetes</h3>
+            <p data-lang="es" class="text-gray-400 mb-3">
+              Automatiza deploys, limpieza de pods y monitoreo con scripts simples.
+            </p>
+            <p data-lang="en" class="text-gray-400 mb-3 hidden">
+              Automate deployments, pod cleanup, and monitoring with simple scripts.
+            </p>
             <a
-              href="https://gumroad.com/"
+              href="https://ko-fi.com/s/5e6d3116c4"
               target="_blank"
               class="inline-block bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg"
-              >Ver en Gumroad</a
+              >Ko-fi Page</a
             >
           </div>
 
+          <!-- Project 2 -->
           <div class="bg-gray-800 p-6 rounded-2xl shadow hover:shadow-lg transition">
-            <h3 class="text-xl font-semibold mb-2">Dashboard Grafana – Health Cluster</h3>
-            <p class="text-gray-400 mb-3">Panel completo para visualizar CPU, memory y pods.</p>
+            <h3 class="text-xl font-semibold mb-2">Dashboard Grafana – Cluster Health</h3>
+            <p data-lang="es" class="text-gray-400 mb-3">
+              Panel completo para visualizar CPU, memoria y estado de pods.
+            </p>
+            <p data-lang="en" class="text-gray-400 mb-3 hidden">
+              Complete panel to visualize CPU, memory, and pod health status.
+            </p>
             <a
-              href="https://github.com/"
+              href="https://github.com/sebafa/"
               target="_blank"
               class="inline-block bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg"
-              >Ver en GitHub</a
+              >GitHub</a
             >
           </div>
         </div>
@@ -51,20 +107,40 @@ import "../styles.css";
 
       <!-- Contact Section -->
       <section id="contact" class="text-center">
-        <h2 class="text-2xl font-semibold mb-4">📬 Contacto</h2>
-        <p class="text-gray-400 mb-4">
+        <h2 data-lang="es" class="text-2xl font-semibold mb-4">📬 Contacto</h2>
+        <h2 data-lang="en" class="text-2xl font-semibold mb-4 hidden">📬 Contact</h2>
+
+        <p data-lang="es" class="text-gray-400 mb-4">
           ¿Querés colaborar o pedirme una plantilla personalizada?
         </p>
+        <p data-lang="en" class="text-gray-400 mb-4 hidden">
+          Want to collaborate or request a custom template?
+        </p>
+
         <a
           href="mailto:seba.lagwagon@gmail.com"
           class="inline-block bg-purple-600 hover:bg-purple-700 text-white py-2 px-6 rounded-lg"
+          data-lang="es"
           >Escribime</a
+        >
+        <a
+          href="mailto:seba.lagwagon@gmail.com"
+          class="inline-block bg-purple-600 hover:bg-purple-700 text-white py-2 px-6 rounded-lg hidden"
+          data-lang="en"
+          >Email me</a
         >
       </section>
 
       <!-- Footer -->
       <footer class="text-center text-gray-500 mt-16 text-sm">
-        © 2025 Seba DevOps. Hecho con Astro + Tailwind 💻
+        <p data-lang="es">
+          © 2025 Seba DevOps. Hecho con Astro + Tailwind 💻 |
+          <a href="https://ko-fi.com/sebadevops" target="_blank" class="text-blue-400 hover:text-blue-300">Apoyame en Ko-fi</a>
+        </p>
+        <p data-lang="en" class="hidden">
+          © 2025 Seba DevOps. Built with Astro + Tailwind 💻 |
+          <a href="https://ko-fi.com/sebadevops" target="_blank" class="text-blue-400 hover:text-blue-300">Support me on Ko-fi</a>
+        </p>
       </footer>
     </main>
   </body>
