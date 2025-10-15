@@ -1,5 +1,4 @@
-<!DOCTYPE html><html lang="es" data-astro-cid-j7pv25f6> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><title>DevOps Tools</title><link rel="stylesheet" href="/Seba-DevOps-Tools/_astro/index.D-acMpRK.css"><script type="module">function t(e){document.querySelectorAll("[data-lang]").forEach(a=>{a.dataset.lang===e?a.classList.remove("hidden"):a.classList.add("hidden")}),localStorage.setItem("lang",e)}window.addEventListener("DOMContentLoaded",()=>{const e=localStorage.getItem("lang")||"es";t(e)});
-</script></head> <body class="bg-gray-900 text-gray-100 font-sans relative min-h-screen" data-astro-cid-j7pv25f6> <main class="max-w-4xl mx-auto px-6 py-16" data-astro-cid-j7pv25f6> <!-- 🌎 Selector de idioma --> <div class="text-right mb-4" data-astro-cid-j7pv25f6> <button onclick="switchLang('es')" class="text-gray-400 hover:text-white mx-1" data-astro-cid-j7pv25f6>🇪🇸 ES</button> <button onclick="switchLang('en')" class="text-gray-400 hover:text-white mx-1" data-astro-cid-j7pv25f6>🇬🇧 EN</button> </div> <!-- Header --> <header class="text-center mb-16" data-astro-cid-j7pv25f6> <h1 class="text-4xl font-bold mb-2" data-astro-cid-j7pv25f6>🚀 Seba DevOps Tools</h1> <p data-lang="es" class="text-gray-400" data-astro-cid-j7pv25f6>
+<!DOCTYPE html><html lang="es" data-astro-cid-j7pv25f6> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><title>DevOps Tools</title><link rel="stylesheet" href="/Seba-DevOps-Tools/_astro/index.D-acMpRK.css"></head> <body class="bg-gray-900 text-gray-100 font-sans relative min-h-screen" data-astro-cid-j7pv25f6> <main class="max-w-4xl mx-auto px-6 py-16" data-astro-cid-j7pv25f6> <!-- 🌎 Selector de idioma --> <div class="text-right mb-4" data-astro-cid-j7pv25f6> <button onclick="switchLang('es')" class="text-gray-400 hover:text-white mx-1" data-astro-cid-j7pv25f6>🇪🇸 ES</button> <button onclick="switchLang('en')" class="text-gray-400 hover:text-white mx-1" data-astro-cid-j7pv25f6>🇬🇧 EN</button> </div> <!-- Header --> <header class="text-center mb-16" data-astro-cid-j7pv25f6> <h1 class="text-4xl font-bold mb-2" data-astro-cid-j7pv25f6>🚀 Seba DevOps Tools</h1> <p data-lang="es" class="text-gray-400" data-astro-cid-j7pv25f6>
 Scripts, dashboards y automatizaciones para clusters y CI/CD.
 </p> <p data-lang="en" class="text-gray-400 hidden" data-astro-cid-j7pv25f6>
 Scripts, dashboards and automations for CI/CD and Kubernetes clusters.
@@ -23,4 +22,20 @@ Want to collaborate or request a custom template?
 © 2025 Seba DevOps. Hecho con Astro + Tailwind 💻 |
 <a href="https://ko-fi.com/sebadevops" target="_blank" class="text-blue-400 hover:text-blue-300" data-astro-cid-j7pv25f6>Apoyame en Ko-fi</a> </p> <p data-lang="en" class="hidden" data-astro-cid-j7pv25f6>
 © 2025 Seba DevOps. Built with Astro + Tailwind 💻 |
-<a href="https://ko-fi.com/sebadevops" target="_blank" class="text-blue-400 hover:text-blue-300" data-astro-cid-j7pv25f6>Support me on Ko-fi</a> </p> </footer> </main> </body></html>
+<a href="https://ko-fi.com/sebadevops" target="_blank" class="text-blue-400 hover:text-blue-300" data-astro-cid-j7pv25f6>Support me on Ko-fi</a> </p> </footer> </main> <!-- ✅ Script funcional en build estático --> <script>
+      function switchLang(lang) {
+        document.querySelectorAll("[data-lang]").forEach((el) => {
+          if (el.dataset.lang === lang) {
+            el.classList.remove("hidden");
+          } else {
+            el.classList.add("hidden");
+          }
+        });
+        localStorage.setItem("lang", lang);
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const savedLang = localStorage.getItem("lang") || "es";
+        switchLang(savedLang);
+      });
+    </script> </body> </html>
